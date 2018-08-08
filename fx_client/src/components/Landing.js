@@ -4,9 +4,8 @@ const Landing = () => {
   return (
     <div style={{textAlign: "center"}}>
       <h1>
-        Emaily!
+        FX Arbitrage Simulation
       </h1>
-      Collect feedback from your users
     </div>
   )
 }

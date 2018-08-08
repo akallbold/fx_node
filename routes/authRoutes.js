@@ -1,6 +1,11 @@
 const passport = require('passport')
+const GoogleStrategy = require('passport-google-oauth20').Strategy
 
 module.exports = (app) => {
+
+  // app.get('/', (req, res) => {
+  //   res.send({yo:"dawg"})
+  // })
 
   app.get(
     '/auth/google',
@@ -12,7 +17,7 @@ module.exports = (app) => {
   app.get('/auth/google/callback',
    passport.authenticate('google'),
    (req, res) => {
-     res.redirect('/surveys')
+     console.log("callback is working")
    }
  )
 

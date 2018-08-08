@@ -6,6 +6,7 @@ import Payments from './Payments'
 class Header extends Component {
 
   renderContent() {
+          console.log("auth", this.props.auth)
     switch (this.props.auth){
       case null:
         return
@@ -30,7 +31,7 @@ class Header extends Component {
             to={this.props.auth ? '/surveys' : '/'}
             className="left brand-logo"
           >
-            Emaily
+            Foreign Exchange Arbitrage
           </Link>
           <ul className="right">
             {this.renderContent()}
