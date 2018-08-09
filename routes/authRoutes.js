@@ -3,21 +3,20 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy
 
 module.exports = (app) => {
 
-  // app.get('/', (req, res) => {
-  //   res.send({yo:"dawg"})
-  // })
 
   app.get(
     '/auth/google',
     passport.authenticate('google', {
       scope: ['profile', 'email']
-    })
+    }, console.log("hello"))
   )
 
   app.get('/auth/google/callback',
    passport.authenticate('google'),
    (req, res) => {
      console.log("callback is working")
+     // res.redirect('/')
+     res.redirect('/home')
    }
  )
 
@@ -27,6 +26,8 @@ module.exports = (app) => {
   })
 
   app.get('/api/current_user', (req, res) => {
+    console.log("current user",req.user)
     res.send(req.user)
+    res.redirect('/home')
   })
 }
