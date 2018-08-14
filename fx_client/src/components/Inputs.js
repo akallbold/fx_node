@@ -14,7 +14,6 @@ class Inputs extends Component {
 
   handleChange = (event) => {
     this.props.updateMaxInvestment(event.target.value)
-
     if (this.props.trade){
       this.props.updateTrade()
     }
@@ -40,10 +39,11 @@ class Inputs extends Component {
 
   render() {
     return (
-      <div className="space-right col s6 ">
+      <div className="left col s6"
+            style= {{marginBottom: "50px"}}>
         <form>
           <label className="blackfont"> {`What is your maximum investment (in ${this.props.baseCurrencySymbol}) ?`}
-          <input type= "text"
+          <input type= "text" className="blackfont"
             value= {this.props.maxInvestment}
             placeholder = {this.props.baseCurrencySymbol}
             onChange={this.handleChange}></input>
@@ -51,27 +51,37 @@ class Inputs extends Component {
           <br></br>
           <label className="blackfont">What is your base currency?</label>
           <br></br>
-          <form className="currency-radio-buttons">
-              <label>
-                <input type="radio" value="USD" name="currency" checked= {this.props.baseCurrency === "USD"} onChange={this.handleRadioButton}/>
+          <form className="currency-radio-buttons with-gap radio-button-css">
+            <p>
+              <label className="with-gap">
+                <input className="with-gap" type="radio" value="USD" name="currency" checked= {this.props.baseCurrency === "USD"} onChange={this.handleRadioButton}/>
                 <span>USD</span>
               </label>
-              <label>
-                <input type="radio" value="EUR" name="currency" checked= {this.props.baseCurrency === "EUR"} onChange={this.handleRadioButton}/>
+              </p>
+              <p>
+              <label className="with-gap">
+                <input className="with-gap" type="radio" value="EUR" name="currency" checked= {this.props.baseCurrency === "EUR"} onChange={this.handleRadioButton}/>
                 <span>EUR</span>
               </label>
+              </p>
+              <p>
               <label>
-                <input type="radio" value="AUD" name="currency" checked= {this.props.baseCurrency === "AUD"} onChange={this.handleRadioButton}/>
+                <input className="with-gap" type="radio" value="AUD" name="currency" checked= {this.props.baseCurrency === "AUD"} onChange={this.handleRadioButton}/>
                 <span>AUD</span>
               </label>
+              </p>
+              <p>
               <label>
-                <input type="radio" value="GBP" name="currency" checked= {this.props.baseCurrency === "GBP"} onChange={this.handleRadioButton}/>
+                <input  className="with-gap" type="radio" value="GBP" name="currency" checked= {this.props.baseCurrency === "GBP"} onChange={this.handleRadioButton}/>
                 <span>GBP</span>
               </label>
+              </p>
+              <p>
               <label>
-                <input type="radio" value="JPY" name="currency" checked= {this.props.baseCurrency === "JPY"} onChange={this.handleRadioButton}/>
+                <input className="with-gap" type="radio" value="JPY" name="currency" checked= {this.props.baseCurrency === "JPY"} onChange={this.handleRadioButton}/>
                 <span>JPY</span>
               </label>
+              </p>
         </form>
 
           <button className= "btn waves-effect" onClick = {this.handleClick}>
@@ -94,14 +104,5 @@ class Inputs extends Component {
     );
   }
 }
-
-  // const mapStateToProps = (state) => {
-  //   return {
-  //     allCurrencies:state.allCurrencies,
-  //     maxInvestment:state.maxInvestment,
-  //     baseCurrency:state.baseCurrency,
-  //     tradeOn: state.tradeOn
-  //   }
-  // }
 
 export default (Inputs);

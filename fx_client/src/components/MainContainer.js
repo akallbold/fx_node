@@ -1,10 +1,8 @@
 import { Link } from 'react-router-dom'
-
 import React, { Component } from 'react';
 import CurrencyRates from './CurrencyRates'
 import Inputs from './Inputs'
 import TradeTable from './TradeTable'
-import API_KEY from './config.js';
 
 
 export const createTradePermutations = (nonBaseCurrencies) => {
@@ -92,7 +90,7 @@ class MainContainer extends Component {
   }
 
   fetchRates = (currency) => {
-    fetch(`https://data.fixer.io/api/latest?access_key=${API_KEY}&base=${currency}&symbols=USD,AUD,EUR,JPY,GBP`)
+    fetch(`https://data.fixer.io/api/latest?access_key=be213eba6210673fe66911921c604f0b&base=${currency}&symbols=USD,AUD,EUR,JPY,GBP`)
     .then(response => response.json())
     .then(data => {
       this.setState({[data.base]: data.rates, timeOfLastFetch: new Date()})
@@ -185,11 +183,12 @@ class MainContainer extends Component {
 
   render() {
     return (
-      <div className="main-container">
-        <h2>Foreign Exchange Arbitrage Simulation</h2>
-        <div className= "container">
+      <div >
+
+        <div >
           <div className= "top-row">
-            <Inputs startTrades = {this.startTrades}
+            <Inputs className="left col s6"
+                    startTrades = {this.startTrades}
                     maxInvestment = {this.state.maxInvestment}
                     updateMaxInvestment = {this.updateMaxInvestment}
                     trade = {this.state.trade}
@@ -201,7 +200,8 @@ class MainContainer extends Component {
                     baseCurrencySymbol = {this.state.baseCurrencySymbol}
                     refreshRates = {this.refreshRates}
             />
-            <CurrencyRates USD= {this.state.USD}
+            <CurrencyRates className="right col s6"
+                          USD= {this.state.USD}
                            EUR= {this.state.EUR}
                            GBP= {this.state.GBP}
                            AUD= {this.state.AUD}
@@ -209,8 +209,9 @@ class MainContainer extends Component {
             />
 
           </div>
-          <div className = "bottom-row">
-            <TradeTable successfulTrades= {this.state.successfulTrades}
+          <div >
+            <TradeTable className="right"
+              successfulTrades= {this.state.successfulTrades}
                         baseCurrencySymbol = {this.state.baseCurrencySymbol}
             />
           </div>

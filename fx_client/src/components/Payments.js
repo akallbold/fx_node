@@ -5,13 +5,15 @@ import * as actions from '../actions'
 
 class Payments extends Component {
   render() {
+    console.log(this.props)
+
     return (
       <StripeCheckout
-        amount= {500}
+        amount= {1000000*100}
         token= {token => this.props.handleToken(token)}
-        stripeKey={process.env.REACT_APP_STRIPE_KEY}
+        stripeKey={"pk_test_wAySltTvUJPkPUZ7aHqUC7X6"}
         name="FX Arbitrage"
-        description="Enter information for $5 of FX trades"
+        description={`Enter information for trade credit`}
       >
         <button className="btn">
           Add credits
@@ -21,7 +23,11 @@ class Payments extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+      maxInvestment: state.maxInvestment
+  }
+}
 
 
-
-export default connect(null, actions)(Payments)
+export default connect(mapStateToProps, actions)(Payments)

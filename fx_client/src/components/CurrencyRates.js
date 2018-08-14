@@ -6,10 +6,11 @@ class CurrencyRates extends Component {
 
   render() {
     return (
-      <div>
+      <div className="currency-table col s6 right"
+        style= {{marginBottom: "50px"}}>
         <h6>Real Time Exchange Rates</h6>
 
-        <table className="currency-table col s6">
+        <table className="currency-table ">
           {/* <caption>Real Time Exchange Rates </caption> */}
           <tbody>
             {/* <th>Real Time Exchange Rates</th> */}

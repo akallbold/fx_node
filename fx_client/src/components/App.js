@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import * as actions from "../actions"
 import Header from "./Header"
 import Landing from "./Landing"
-import Dashboard from "./Dashboard"
+import MainContainer from "./MainContainer"
 
 class App extends Component{
 
@@ -17,9 +17,9 @@ class App extends Component{
       <div className= "container">
         <BrowserRouter>
           <div >
-            <Header/>
+            <Header maxInvestment= {this.props.maxInvestment}/>
             <Route exact path="/" component={Landing}/>
-            <Route exact path="/home" component={Dashboard}/>
+            <Route exact path="/home" component={MainContainer}/>
           </div>
         </BrowserRouter>
       </div>
@@ -27,4 +27,10 @@ class App extends Component{
   }
 }
 
-export default connect(null, actions) (App)
+function mapStateToProps(state) {
+  return ({
+    maxInvestment: state.maxInvestment
+  })
+}
+
+export default connect(mapStateToProps, actions) (App)

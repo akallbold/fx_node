@@ -53,7 +53,8 @@ createTradeElements = () => {
 
   render() {
     return (
-    <table className="col s12 table striped ">
+    <table className="col s12 table striped "
+            style= {{margin: "500px 0px 0px 0px"}}>
       {/* <caption>Trades</caption> */}
       <thead>
         <tr align="center">
